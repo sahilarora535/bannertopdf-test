@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# This file converts banner files to PDF files using cupsfilter.
+# The underlying filter used here is bannertopdf.
+# Arguments: banner file to convert, or none to convert all.
+# Author: Sahil Arora
+
+# Variables
+CONVERTED_DIR=converted
+BANNERS_DIR=banners
+
+# Create directory if it does not exist
+mkdir -p $CONVERTED_DIR
+
+if [ $# -eq "0" ]; then
+  for banner in `ls $BANNERS_DIR/`
+    do
+      echo -e "Converting '$BANNERS_DIR/$banner'\n"
+      cupsfilter $BANNERS_DIR/$banner > $CONVERTED_DIR/$banner.pdf 
+      echo
+    done
+else
+  for banner in $@
+    do
+      echo -e "Converting '$BANNERS_DIR/$banner'\n"
+      cupsfilter $BANNERS_DIR/$banner > $CONVERTED_DIR/$banner.pdf 
+      echo
+    done
+fi
+
