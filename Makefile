@@ -1,5 +1,5 @@
-CONVERTED_DIR=converted
+CONVERTED_DIR=converted_qpdf
 
 # Clean all converted banner files
 clean:
-	${RM} -r $(CONVERTED_DIR)
+	$(RM) -r $(CONVERTED_DIR)
